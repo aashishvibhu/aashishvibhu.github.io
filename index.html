@@ -1,0 +1,452 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aashish Vibhu A | Backend Engineer</title>
+<meta name="description" content="Aashish Vibhu A - Backend Engineer (Java, Spring Boot, Kafka, PostgreSQL, AWS) at Zoho. 4+ years building distributed, multi-tenant SaaS systems.">
+<meta property="og:title" content="Aashish Vibhu A | Backend Engineer">
+<meta property="og:description" content="Java · Spring Boot · Kafka · PostgreSQL · AWS. 4+ years building distributed, multi-tenant SaaS systems at Zoho.">
+<meta property="og:url" content="https://aashishvibhu.github.io/">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%2314b8a6'/><text x='32' y='42' font-family='monospace' font-size='28' font-weight='700' text-anchor='middle' fill='%230b1220'>AV</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0b1220;
+    --bg-2: #0f1a2e;
+    --card: #121e34;
+    --border: #1f2d47;
+    --text: #e6edf7;
+    --muted: #93a3bd;
+    --accent: #2dd4bf;
+    --accent-2: #fbbf24;
+    --accent-ink: #0b1220;
+    --chip: #17253f;
+    --code-key: #c084fc;
+    --code-str: #86efac;
+    --code-fn: #7dd3fc;
+    --shadow: 0 10px 30px rgba(0,0,0,.35);
+  }
+  :root[data-theme="light"] {
+    --bg: #f7f8fb;
+    --bg-2: #eef1f7;
+    --card: #ffffff;
+    --border: #dfe4ee;
+    --text: #0f172a;
+    --muted: #55627a;
+    --accent: #0d9488;
+    --accent-2: #b45309;
+    --accent-ink: #ffffff;
+    --chip: #eef2f8;
+    --code-key: #7c3aed;
+    --code-str: #15803d;
+    --code-fn: #0369a1;
+    --shadow: 0 10px 30px rgba(15,23,42,.08);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    transition: background .25s, color .25s;
+  }
+  a { color: inherit; text-decoration: none; }
+  .mono { font-family: "JetBrains Mono", ui-monospace, Consolas, monospace; }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+
+  /* Nav */
+  nav {
+    position: sticky; top: 0; z-index: 10;
+    background: color-mix(in srgb, var(--bg) 82%, transparent);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+  }
+  nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 64px; gap: 16px; }
+  .logo { font-weight: 700; font-size: 1.05rem; }
+  .logo span { color: var(--accent); }
+  .nav-links { display: flex; gap: 22px; align-items: center; font-size: .92rem; color: var(--muted); }
+  .nav-links a:hover { color: var(--text); }
+  .theme-btn {
+    background: var(--chip); border: 1px solid var(--border); color: var(--text);
+    width: 36px; height: 36px; border-radius: 10px; cursor: pointer; font-size: 1rem;
+    display: grid; place-items: center;
+  }
+
+  /* Buttons */
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 11px 18px; border-radius: 10px; font-weight: 600; font-size: .95rem;
+    border: 1px solid var(--border); background: var(--card); transition: transform .15s, border-color .15s;
+  }
+  .btn:hover { transform: translateY(-2px); border-color: var(--accent); }
+  .btn.primary { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+  .btn svg { width: 18px; height: 18px; }
+
+  /* Hero */
+  .hero { padding: 88px 0 64px; }
+  .hero .wrap { display: grid; grid-template-columns: 1.1fr .9fr; gap: 48px; align-items: center; }
+  .status {
+    display: inline-flex; align-items: center; gap: 8px; font-size: .82rem; color: var(--muted);
+    border: 1px solid var(--border); padding: 6px 12px; border-radius: 999px; background: var(--card);
+  }
+  .dot { width: 8px; height: 8px; border-radius: 50%; background: #22c55e; box-shadow: 0 0 0 4px rgba(34,197,94,.18); }
+  h1 { font-size: clamp(2.3rem, 5.5vw, 3.6rem); line-height: 1.08; letter-spacing: -.02em; margin: 18px 0 10px; font-weight: 800; }
+  .role { font-size: 1.15rem; color: var(--accent); font-weight: 600; }
+  .lead { color: var(--muted); font-size: 1.06rem; margin: 16px 0 28px; max-width: 560px; }
+  .cta { display: flex; flex-wrap: wrap; gap: 12px; }
+  .socials { display: flex; gap: 10px; margin-top: 22px; }
+  .socials a {
+    width: 42px; height: 42px; border-radius: 10px; display: grid; place-items: center;
+    background: var(--card); border: 1px solid var(--border); color: var(--muted); transition: color .15s, border-color .15s;
+  }
+  .socials a:hover { color: var(--accent); border-color: var(--accent); }
+  .socials svg { width: 20px; height: 20px; }
+
+  .code-card {
+    background: var(--card); border: 1px solid var(--border); border-radius: 16px;
+    box-shadow: var(--shadow); overflow: hidden;
+  }
+  .code-head { display: flex; align-items: center; gap: 7px; padding: 12px 16px; border-bottom: 1px solid var(--border); }
+  .code-head i { width: 11px; height: 11px; border-radius: 50%; display: block; }
+  .code-head .file { margin-left: 10px; font-size: .8rem; color: var(--muted); }
+  pre { padding: 18px 20px; font-size: .84rem; line-height: 1.75; overflow-x: auto; color: var(--text); }
+  .k { color: var(--code-key); } .s { color: var(--code-str); } .f { color: var(--code-fn); } .c { color: var(--muted); }
+
+  /* Sections */
+  section { padding: 72px 0; }
+  section.alt { background: var(--bg-2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+  .eyebrow { font-size: .8rem; color: var(--accent); letter-spacing: .12em; text-transform: uppercase; }
+  h2 { font-size: clamp(1.6rem, 3.2vw, 2.1rem); letter-spacing: -.01em; margin: 6px 0 28px; }
+
+  /* Stats */
+  .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 16px; }
+  .stat { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 22px; }
+  .stat b { display: block; font-size: 2rem; font-weight: 800; color: var(--accent); line-height: 1.1; }
+  .stat span { color: var(--muted); font-size: .9rem; }
+
+  /* About */
+  .about { display: grid; grid-template-columns: 1.3fr 1fr; gap: 40px; }
+  .about p { color: var(--muted); margin-bottom: 14px; font-size: 1.02rem; }
+  .about p strong { color: var(--text); }
+  .facts { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 22px; font-size: .92rem; }
+  .facts div { display: flex; justify-content: space-between; gap: 12px; padding: 10px 0; border-bottom: 1px dashed var(--border); }
+  .facts div:last-child { border-bottom: 0; }
+  .facts span { color: var(--muted); }
+  .facts b { font-weight: 600; text-align: right; }
+
+  /* Experience */
+  .timeline { position: relative; padding-left: 28px; }
+  .timeline::before { content: ""; position: absolute; left: 7px; top: 6px; bottom: 6px; width: 2px; background: var(--border); }
+  .job { position: relative; margin-bottom: 26px; }
+  .job::before {
+    content: ""; position: absolute; left: -28px; top: 26px; width: 16px; height: 16px; border-radius: 50%;
+    background: var(--bg); border: 3px solid var(--accent);
+  }
+  .job-card { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 24px 26px; }
+  .job-top { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 6px 16px; align-items: baseline; }
+  .job h3 { font-size: 1.15rem; }
+  .job .company { color: var(--accent); font-weight: 600; font-size: .95rem; }
+  .job .when { color: var(--muted); font-size: .82rem; }
+  .job ul { margin: 14px 0 0 18px; color: var(--muted); }
+  .job li { margin: 7px 0; }
+  .job li b { color: var(--text); }
+  .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+
+  /* Skills */
+  .skills { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; }
+  .skill-group { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 22px; }
+  .skill-group h4 { font-size: .95rem; margin-bottom: 14px; display: flex; align-items: center; gap: 8px; }
+  .skill-group h4::before { content: ""; width: 8px; height: 8px; border-radius: 2px; background: var(--accent-2); }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+  .chip { background: var(--chip); border: 1px solid var(--border); border-radius: 8px; padding: 4px 10px; font-size: .82rem; }
+
+  /* Education */
+  .edu { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
+  .edu-card { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 22px; }
+  .edu-card h3 { font-size: 1.02rem; margin-bottom: 4px; }
+  .edu-card p { color: var(--muted); font-size: .9rem; }
+  .edu-card .grade { color: var(--accent); font-weight: 600; margin-top: 8px; font-size: .9rem; }
+
+  /* Contact */
+  .contact { text-align: center; }
+  .contact h2 { margin-bottom: 12px; }
+  .contact p { color: var(--muted); max-width: 560px; margin: 0 auto 28px; }
+  .contact .cta { justify-content: center; }
+  footer { border-top: 1px solid var(--border); padding: 26px 0; color: var(--muted); font-size: .85rem; text-align: center; }
+
+  /* Reveal */
+  .reveal { opacity: 0; transform: translateY(14px); transition: opacity .6s ease, transform .6s ease; }
+  .reveal.in { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } html { scroll-behavior: auto; } }
+
+  @media (max-width: 860px) {
+    .hero { padding: 56px 0 40px; }
+    .hero .wrap, .about { grid-template-columns: 1fr; gap: 32px; }
+    .nav-links a.hide-sm { display: none; }
+  }
+  @media (max-width: 480px) {
+    .wrap { padding: 0 16px; }
+    .skills { grid-template-columns: 1fr; }
+    pre { font-size: .76rem; }
+    .job-card { padding: 20px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a href="#" class="logo mono">aashish<span>.</span>vibhu</a>
+    <div class="nav-links">
+      <a href="#about" class="hide-sm">About</a>
+      <a href="#experience" class="hide-sm">Experience</a>
+      <a href="#skills" class="hide-sm">Skills</a>
+      <a href="#contact">Contact</a>
+      <button class="theme-btn" id="themeBtn" aria-label="Toggle light and dark theme">☀</button>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div>
+      <span class="status"><span class="dot"></span>Open to backend &amp; full-stack roles</span>
+      <h1>Aashish Vibhu A</h1>
+      <div class="role">Backend Engineer · Software Development Engineer @ Zoho</div>
+      <p class="lead">I build distributed, enterprise-grade systems in Java and Spring Boot: the kind that serve hundreds of organizations and can't afford to lose data.</p>
+      <div class="cta">
+        <a class="btn primary" href="Aashish_Vibhu_A_Resume.pdf" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Download Resume
+        </a>
+        <a class="btn" href="mailto:aashishvibhuanand@gmail.com">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>
+          Get in touch
+        </a>
+      </div>
+      <div class="socials">
+        <a href="https://github.com/aashishvibhu" target="_blank" rel="noopener" aria-label="GitHub"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.84 1.19 3.1 0 4.42-2.69 5.39-5.26 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5Z"/></svg></a>
+        <a href="https://www.linkedin.com/in/aashishvibhu" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13ZM7.12 20.45H3.56V9h3.56v11.45ZM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0Z"/></svg></a>
+        <a href="https://leetcode.com/u/aashishvibhu" target="_blank" rel="noopener" aria-label="LeetCode"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.48 0a1.37 1.37 0 0 0-.96.44L7.12 6.21l-2.88 3.08a5.3 5.3 0 0 0-1.21 2.04 5.6 5.6 0 0 0-.13 2.65l.02.1c.15.69.43 1.36.84 1.96.21.31.45.6.72.87l4.36 4.38a5.5 5.5 0 0 0 7.71.05l2.68-2.65a1.37 1.37 0 1 0-1.93-1.95l-2.68 2.65a2.76 2.76 0 0 1-3.85-.02l-4.36-4.38a2.7 2.7 0 0 1-.71-1.3 2.9 2.9 0 0 1 .06-1.45c.12-.36.31-.69.58-.98l2.88-3.08 5.4-5.77A1.37 1.37 0 0 0 13.48 0Zm-2.87 12.56a1.37 1.37 0 1 0 0 2.74h10.03a1.37 1.37 0 1 0 0-2.74H10.61Z"/></svg></a>
+        <a href="mailto:aashishvibhuanand@gmail.com" aria-label="Email"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg></a>
+      </div>
+    </div>
+
+    <div class="code-card reveal">
+      <div class="code-head">
+        <i style="background:#f87171"></i><i style="background:#fbbf24"></i><i style="background:#34d399"></i>
+        <span class="file mono">Engineer.java</span>
+      </div>
+<pre class="mono"><span class="k">public record</span> <span class="f">Engineer</span>(String name, ...) {}
+
+<span class="k">var</span> me = Engineer.<span class="f">builder</span>()
+    .name(<span class="s">"Aashish Vibhu A"</span>)
+    .role(<span class="s">"Backend Engineer"</span>)
+    .company(<span class="s">"Zoho"</span>)
+    .experience(<span class="s">"4+ years"</span>)
+    .stack(List.<span class="f">of</span>(
+        <span class="s">"Java 17"</span>, <span class="s">"Spring Boot"</span>,
+        <span class="s">"Kafka"</span>, <span class="s">"PostgreSQL"</span>,
+        <span class="s">"Redis"</span>, <span class="s">"AWS"</span>, <span class="s">"React"</span>))
+    .loves(<span class="s">"hard correctness problems"</span>)
+    .<span class="f">build</span>();
+
+<span class="c">// concurrency · migrations · perf under load</span></pre>
+    </div>
+  </div>
+</header>
+
+<section class="alt">
+  <div class="wrap">
+    <div class="eyebrow mono">// impact</div>
+    <h2>Numbers from production</h2>
+    <div class="stats">
+      <div class="stat reveal"><b>4+</b><span>years building backend systems at Zoho</span></div>
+      <div class="stat reveal"><b>200+</b><span>tenant organizations served</span></div>
+      <div class="stat reveal"><b>70%</b><span>faster report generation via PostgreSQL tuning</span></div>
+      <div class="stat reveal"><b>30%</b><span>fewer production support tickets</span></div>
+      <div class="stat reveal"><b>0</b><span>data lost across TB-scale Postgres upgrades</span></div>
+      <div class="stat reveal"><b>5</b><span>developers led on a product module</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap">
+    <div class="eyebrow mono">// about</div>
+    <h2>Who I am</h2>
+    <div class="about">
+      <div class="reveal">
+        <p>I'm a <strong>Backend Engineer at Zoho</strong> with 4+ years of experience building highly scalable RESTful microservices for a multi-tenant enterprise SaaS product.</p>
+        <p>My work spans the full lifecycle: designing schemas and REST APIs, building <strong>Kafka-based</strong> async architectures, tuning <strong>PostgreSQL</strong> under real load, shipping <strong>React</strong> frontends when a feature needs one, and keeping it all observable in production. I currently lead a 5-member module team.</p>
+        <p>I enjoy the parts of backend engineering where correctness is hard: concurrency, data migrations, performance under load, and making systems observable enough to debug at 2 AM without guessing.</p>
+      </div>
+      <div class="facts reveal">
+        <div><span>Role</span><b>SDE (Member Technical Staff)</b></div>
+        <div><span>Company</span><b>Zoho Corporation</b></div>
+        <div><span>Location</span><b>Chennai, India</b></div>
+        <div><span>Focus</span><b>Backend · Distributed Systems</b></div>
+        <div><span>Open to</span><b>Backend &amp; Full-Stack roles</b></div>
+        <div><span>Email</span><b><a href="mailto:aashishvibhuanand@gmail.com">aashishvibhuanand@gmail.com</a></b></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="experience" class="alt">
+  <div class="wrap">
+    <div class="eyebrow mono">// experience</div>
+    <h2>Where I've worked</h2>
+    <div class="timeline">
+      <div class="job reveal">
+        <div class="job-card">
+          <div class="job-top">
+            <div>
+              <h3>Software Development Engineer (Member Technical Staff)</h3>
+              <div class="company">Zoho Corporation · Chennai, IN</div>
+            </div>
+            <div class="when mono">Jul 2022 - Present</div>
+          </div>
+          <ul>
+            <li>Designed and built highly scalable RESTful microservices in Java and Spring Boot on <b>AWS (EC2, ECS, S3, RDS)</b> for a multi-tenant SaaS product serving <b>200+ organizations</b>, from schema design and REST APIs to frontend and automated tests.</li>
+            <li>Built distributed, event-driven services integrating Java and C# components via RPC, IPC and <b>Apache Kafka</b> for reliable, high-throughput sync and async communication.</li>
+            <li>Optimized PostgreSQL through indexing, query optimization and execution-plan analysis, improving report generation by up to <b>70%</b>.</li>
+            <li>Led PostgreSQL major version upgrades across 200+ organizations with terabyte-scale databases, ensuring <b>zero data loss</b>.</li>
+            <li>Developed a centralized observability platform for async workflows, scheduled jobs and multithreaded processes, reducing MTTR and cutting support tickets by <b>30%</b>.</li>
+            <li>Owned product security: led remediation of critical CVEs through dependency upgrades and security hardening.</li>
+            <li>Built reusable frontend components in React.js and Ember.js adopted across multiple product modules.</li>
+            <li>Owned a product module end to end and <b>led a team of 5 developers</b>: feature design, code reviews, mentoring and production issue analysis.</li>
+          </ul>
+          <div class="tags">
+            <span class="chip">Java 17</span><span class="chip">Spring Boot</span><span class="chip">Kafka</span><span class="chip">PostgreSQL</span><span class="chip">AWS</span><span class="chip">C# / .NET</span><span class="chip">React.js</span>
+          </div>
+        </div>
+      </div>
+      <div class="job reveal">
+        <div class="job-card">
+          <div class="job-top">
+            <div>
+              <h3>Project Trainee</h3>
+              <div class="company">Zoho Corporation · Chennai, IN</div>
+            </div>
+            <div class="when mono">Mar 2022 - Jul 2022</div>
+          </div>
+          <ul>
+            <li>Developed metadata extraction utilities for Google Drive and Azure File Storage to evaluate cloud storage integration and migration feasibility.</li>
+            <li>Built Active Directory modules supporting enterprise identity and access management (IAM).</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <div class="eyebrow mono">// skills</div>
+    <h2>What I work with</h2>
+    <div class="skills">
+      <div class="skill-group reveal">
+        <h4>Backend</h4>
+        <div class="chips"><span class="chip">Java 17</span><span class="chip">Concurrency &amp; Multithreading</span><span class="chip">Spring Boot</span><span class="chip">Spring MVC</span><span class="chip">Spring Data JPA</span><span class="chip">Spring Security</span><span class="chip">Hibernate</span><span class="chip">C# (.NET)</span><span class="chip">REST APIs</span><span class="chip">OAuth2 / JWT</span><span class="chip">JUnit 5</span><span class="chip">Mockito</span></div>
+      </div>
+      <div class="skill-group reveal">
+        <h4>Distributed Systems</h4>
+        <div class="chips"><span class="chip">Microservices</span><span class="chip">API Gateway</span><span class="chip">Service Discovery</span><span class="chip">Circuit Breaker</span><span class="chip">Apache Kafka</span><span class="chip">RPC / IPC</span></div>
+      </div>
+      <div class="skill-group reveal">
+        <h4>Database &amp; Caching</h4>
+        <div class="chips"><span class="chip">PostgreSQL</span><span class="chip">Query Optimization</span><span class="chip">Performance Tuning</span><span class="chip">Migrations</span><span class="chip">MSSQL</span><span class="chip">DynamoDB</span><span class="chip">Redis</span></div>
+      </div>
+      <div class="skill-group reveal">
+        <h4>Cloud &amp; DevOps</h4>
+        <div class="chips"><span class="chip">AWS EC2</span><span class="chip">S3</span><span class="chip">Lambda</span><span class="chip">RDS</span><span class="chip">ECS</span><span class="chip">CloudWatch</span><span class="chip">Docker</span><span class="chip">Kubernetes</span><span class="chip">Jenkins</span><span class="chip">CI/CD</span><span class="chip">Git</span><span class="chip">Maven</span></div>
+      </div>
+      <div class="skill-group reveal">
+        <h4>Frontend</h4>
+        <div class="chips"><span class="chip">React.js</span><span class="chip">Ember.js</span><span class="chip">JavaScript</span><span class="chip">HTML5</span><span class="chip">CSS3</span></div>
+      </div>
+      <div class="skill-group reveal">
+        <h4>Architecture &amp; Practices</h4>
+        <div class="chips"><span class="chip">System Design (HLD/LLD)</span><span class="chip">Multi-Tenant SaaS</span><span class="chip">SOLID</span><span class="chip">TDD</span><span class="chip">Agile / Scrum</span><span class="chip">CVE Mitigation</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <div class="eyebrow mono">// education</div>
+    <h2>Education</h2>
+    <div class="edu">
+      <div class="edu-card reveal">
+        <h3>Bachelor of Engineering</h3>
+        <p>Rajalakshmi Engineering College, Chennai</p>
+        <p class="mono">2018 - 2022</p>
+        <div class="grade">CGPA 8.56 / 10</div>
+      </div>
+      <div class="edu-card reveal">
+        <h3>Higher Secondary</h3>
+        <p>Kalaimagal Viddyalaya, Chennai</p>
+        <p class="mono">2016 - 2018</p>
+      </div>
+      <div class="edu-card reveal">
+        <h3>Secondary</h3>
+        <p>Gujarathi Vidhyalaya, Kozhikode</p>
+        <p class="mono">2014 - 2016</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <div class="wrap reveal">
+    <div class="eyebrow mono">// contact</div>
+    <h2>Let's build something reliable</h2>
+    <p>I'm open to backend and full-stack roles working on large-scale systems. The fastest way to reach me is email.</p>
+    <div class="cta">
+      <a class="btn primary" href="mailto:aashishvibhuanand@gmail.com">aashishvibhuanand@gmail.com</a>
+      <a class="btn" href="https://www.linkedin.com/in/aashishvibhu" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn" href="Aashish_Vibhu_A_Resume.pdf" target="_blank" rel="noopener">Resume (PDF)</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">© <span id="year">2026</span> Aashish Vibhu A · Built with plain HTML &amp; CSS, hosted on GitHub Pages</div>
+</footer>
+
+<script>
+  (function () {
+    var root = document.documentElement, btn = document.getElementById('themeBtn');
+    function apply(t) { root.setAttribute('data-theme', t); btn.textContent = t === 'light' ? '☾' : '☀'; }
+    var saved = null;
+    try { saved = localStorage.getItem('theme'); } catch (e) {}
+    apply(saved || (window.matchMedia && matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark'));
+    btn.addEventListener('click', function () {
+      var next = root.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+      apply(next);
+      try { localStorage.setItem('theme', next); } catch (e) {}
+    });
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    var els = document.querySelectorAll('.reveal');
+    if ('IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+      }, { threshold: 0.12 });
+      els.forEach(function (el) { io.observe(el); });
+    } else {
+      els.forEach(function (el) { el.classList.add('in'); });
+    }
+  })();
+</script>
+</body>
+</html>
